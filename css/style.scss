@@ -1,0 +1,102 @@
+---
+
+---
+
+// Variable Declarations
+
+$sidebar-color: #29B6F6;
+
+// fonts
+
+@font-face{
+	font-family: 'Muli';
+	src:url({{site.baseurl}}/fonts/muli/Muli-Regular.ttf);
+}
+
+@font-face{
+	font-family: 'Nexa Slab';
+	src:url({{site.baseurl}}/fonts/nexaslab/nexa_slab_regular.otf);
+}
+
+.muli{
+	font-family: 'Muli', sans-serif;
+}
+
+.nexa-slab{
+	font-family: 'Nexa Slab', serif;
+}
+
+body{
+	font-family: 'Muli', sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Nexa Slab', serif;
+}
+
+// Utility
+
+.spacing-top{
+	margin-top: 1em;
+}
+
+// Element Overrides
+
+.navbar{
+  margin-bottom: 2em;
+}
+
+.navbar-brand{
+  font-family: 'Nexa Slab', serif;
+  font-size: 2em;
+  padding-right: 1em;
+}
+
+.nav-item{
+  padding-top: 0.5em;
+}
+
+.footer-title{
+  font-family: 'Nexa Slab', serif;
+}
+
+.main-header{
+	font-size: 5em;
+}
+
+.carousel-control.left, .carousel-control.right {
+	background-image: none;
+}
+
+// Posts
+
+.article-info{
+	font-size: 1em;
+}
+
+// Sidebar CSS
+.main-menu ul {
+  list-style-type: none;
+	padding: 0;
+}
+#sidebar-menu{
+  position:fixed;
+  .main-menu{
+    a {
+      display: block;
+    	color: #999;
+    	padding: 4px 20px;
+    }
+    a:hover {
+    	color: $sidebar-color;
+    	text-decoration: none;
+    	background-color: transparent;
+    	border-left: 1px solid $sidebar-color;
+    }
+  }
+  .sub-menu a {
+  	padding-top: 1px;
+  	padding-bottom: 1px;
+  	padding-left: 30px;
+  }
+}

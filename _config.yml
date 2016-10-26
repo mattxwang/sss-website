@@ -1,0 +1,17 @@
+# Site settings
+title: SSSpace Docs
+description: > #
+  Student Server Space
+baseurl: ""
+url: "http://yourdomain.com"
+repo: "https://github.com/studentserverspace/documentation/"
+
+# Build settings
+markdown: kramdown
+
+
+# Collections
+collections:
+  docs:
+    output: true
+    layout: docs
