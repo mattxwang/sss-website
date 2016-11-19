@@ -1,10 +1,10 @@
 # Site settings
-title: SSSpace Docs
+title: Student Server Space
 description: > #
   Student Server Space
-baseurl: ""
-url: "http://yourdomain.com"
-repo: "https://github.com/studentserverspace/documentation/"
+baseurl: "/sss"
+url: "https://matthewwang.me"
+repo: "https://github.com/studentserverspace/website/"
 
 # Build settings
 markdown: kramdown

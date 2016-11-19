@@ -1,0 +1,222 @@
+---
+layout: docs
+title: Server Administration
+short: server
+permalink: /docs/server-administration/
+author: "Jack Sarick"
+---
+<div class="section">
+  <h2 class="section-header" id="overview">Overview</h2>
+  <p class="lead">
+    Server administration is very tricky, but luckily we've written a guide here to help you figure things out.
+  </p>
+</div>
+<div class="section">
+  <h2 class="section-header" id="login">Login</h2>
+  <p>
+    Remote root login access is disabled on purpose. If at any point you think you might need it, you probably did something seriously wrong. The user admin has sudo rights (you will know the password if you should), but you shouldn't need to sudo very much or very often.
+  </p>
+  <p>
+    Password based login is also disabled on purpose. To login to the server, your key must already be on the server. For your key to be on the server, an existing user must put it there. This makes everything much more secure. The longest cryptographically random password a human can be easily broken in a matter of seconds. Your computer remembers about 3000 randomly generated chars per key. That's like you entering 250 randomly generated 12-character passwords in the correct order every time you log into the server. This is why we use keys over passwords.
+  </p>
+  <p>
+    To add new keys (as an existing user), it's relatively easy.
+    <ul>
+      <li>
+        Get the new users key
+        <ul>
+          <li>
+            On their local machine, execute <code>cat ~/.ssh/id_rsa.pub</code> and copy the whole thing
+          </li>
+          <li>
+            If this file does not exist, they may need to generate a key. Use the command ssh-keygen -t rsa -b 4096 -C "your_email@example.com". Some prompts will appear, use the defaults if you don't need anything special (You don't need a passphrase, but feel free to add one). Make them use an email we can easily identify and contact them with. It should contain their full name. This makes our life easier later on.
+          </li>
+        </ul>
+      </li>
+      <li>
+        On the server edit <code>~/.ssh/authorized_keys</code>, and add the users key.
+      </li>
+      <li>
+        When a user no longer needs access to the server. Remove their key. This is why we needed them to use an easily identifiable email.
+      </li>
+      <li>
+        All of the ssh configuration for the server is done in <code>/etc/ssh/sshd_config</code>. PLEASE do not touch this file if you are not absolutely 150% certain you know EXACTLY what is going to happen. One wrong step and everyone get locked out permanently. I encourage you to look, but this is not something to play around with.
+      </li>
+    </ul>
+  </p>
+</div>
+<div class="section">
+  <h2 class="section-header" id="shell">Shell</h2>
+  <p>The admin's shell is <code>zsh</code>. <code>zsh</code> is like bash, but more. Notable features include:</p>
+
+  <ul>
+    <li>Colours</li>
+    <li>Spellcheck</li>
+    <li>Better wildcards (<code>*</code>)</li>
+    <li>More colours</li>
+    <li>Easier aliases</li>
+    <li>Better history (up arrow key)</li>
+    <li>A few other less exciting things</li>
+  </ul>
+
+  <p>
+    For the most part, life is exactly the same. The most obvious difference (unless maybe you connect over <code>netcat</code>) is the prompt. It's all coloured and stuff! It looks something like this: <code>admin ▶︎ /home/admin/sites/wac stable* $</code>. The first column (pre ▶︎) is the user YOU are. This is probably going <code>admin</code> all the time (sometimes it's <code>www-data</code> if you screwed up while fixing apache). The second column is the directory you are currently in. The third column comes and goes, only being available when you're in a git directory. It displays the branch you are currently on, and a little <code>*</code> if it is not up-to-date. All the base configuration lives in <code>~/.zshrc</code>, and all the features live in <code>~/.zsh</code>. You probably shouldn't be touching the file or directory. Their a customized version (read: pared down) of <a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a>. Most aliases live in <code>~/.custom</code>. Feel free to add your own aliases. Make sure to add comments to your aliases, unless they are blindingly obvious, in which case you should still comment them. You'll notice it contains a <code>zsh</code> shebang (you probably didn't notice that, and now have to google the world shebang), this is not for an actual reason, it's so that editors like <code>vim</code> load the correct colouring.
+  </p>
+
+  <p>
+    The home directory (<code>/home/admin</code>) is a sacred and special place. You should NEVER put important things in the home directory. This means that if, somehow, someone deleted the whole directory, the server would keep running. Think of the directory of a work desk. It's fine to work on it, but put important things where they belong.
+  </p>
+</div>
+<div class="section">
+  <h2 class="section-header" id="cron">Crontab</h2>
+  <p>
+    Cron jobs are thing that run on regular intervals. It's pretty much straight voodoo magic, and the best way to seem like you're working without actually doing any work at all. The crontab folder looks weird at fist glance. Something like this:
+  </p>
+  <div class="card card-block">
+    <pre>
+      <code>
+17 *    *   *  *    root    cd / && run-parts --report /etc/cron.hourly
+52 6    1   *  *    root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+30 8    25  *  *    root    /home/admin/certbot-auto renew --quiet --no-self-upgrade
+30 8    *   *  3    root    sudo apt-get -qq update >> /home/admin/cron/cronlog && sudo apt-get -qq upgrade >> /home/admin/cron/cronlog
+0  *    *   *  *    admin   /home/admin/cron/hourly.sh >> /home/admin/cron/cronlog
+30 8    *   *  *    admin   /home/admin/cron/daily.sh >> /home/admin/cron/cronlog
+21 4    *   *  2    neo     /home/neo/script.sh >> /home/neo/mylog.txt
+      </code>
+    </pre>
+  </div>
+  <p>
+    In practicality, it has more comments, and is probably slightly messier, but the general idea holds. I have added the last line as an example. Looking at it, you may see 7 columns. If you didn't see them, now you do. The table below shows a job split up into its constituent columns:
+  </p>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Minute</th>
+        <th>Hour</th>
+        <th>Day of the month<br>(0-31)</th>
+        <th>Month<br>(1-12)</th>
+        <th>Day of the week<br>(0-7)</th>
+        <th>User</th>
+        <th>Command</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>21</td>
+        <td>4</td>
+        <td>*</td>
+        <td>*</td>
+        <td>2</td>
+        <td>neo</td>
+        <td><code>{cmd}</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    This job will be run run at 4:21 AM every Tuesday by the user neo. A <code>*</code> or wildcard indicates "every", so putting a wildcard in the month column means it will run during every month. This means that if you put a wildcard in the minutes column, that job will run every minute. You should almost never put a wild card in the first two columns, unless you actually want the job to run that frequently.
+  </p>
+
+  <p>
+    Try not to run external scripts (like in the neo example). When you do use them, scripts should be in the home directory of the user that runs them.
+  </p>
+
+  <p>
+    Another interesting thing used in the crontab is the <code>&gt;&gt;</code> command. This is not a <code>cron</code> specific command, it is built into unix. This will append the output (what would normally appear in console) to the specified file. In the case of <code>/home/neo/script.sh &gt;&gt; /home/neo/mylog.txt</code> if <code>script.sh</code> were to <code>echo</code> something, for example, that echo would be appended to <code>mylog.txt</code>.
+  </p>
+
+  <p>
+    To edit the main crontab (only do this for root tasks) <code>sudo vim /etc/crontab</code>. I have also added a folder called <code>cron</code> to the home directory with <code>hourly.sh</code> and <code>daily.sh</code>. These two files should contain all the menial tasks.
+  </p>
+
+  <p>
+    I have tried to keep the scheduling consistent for sake of ease. Please try to stick to the guide lines. Check <a href="http://crontab.guru">http://crontab.guru</a> for help. Only reason I can ever get the timing right.
+  </p>
+
+  <ul>
+    <li>Try to schedule routine internal stuff (updates, checks, etc.) for 8:30 AM. Why 8:30? So no one can bother me before I'm done breakfast, but I'll still have time to deal with it before lunch.
+    <ul>
+      <li>If it is weekly, try to make it a Wednesday. This is so you don't start you week fixing the petty stuff that most likely broke, but you will be able to fix it before the weekend.</li>
+    </ul>
+    </li>
+    <li>Critical things are scheduled for Mondays just after lunch at 14:00 (2 PM) so that even if there will be work to do later, you can still have some time your first lunch break to do the routine check up. </li>
+  </ul>
+</div>
+<div class="section">
+  <h2 class="section-header" id="apache">Apache</h2>
+  <p>
+    Apache is a beast of a program. You will most likely never master it or even come close. That's fine.
+  </p>
+
+  <p>
+    Most of the work that you will need to do will take place in a few config files. There are also a ton of other config files located elsewhere in that directory structure. Some of it is default. Some of it is auto-generated by <code>certbot</code>. Some of it was modified by other programs like <code>phpmyadmin</code>. The moral of this story is that apache is big and scary, but you can learn to manage the parts of it that actually matter.
+  </p>
+
+  <p>
+    Domains are handled in a few places, mainly <code>/etc/apache2/sites-enabled/vhosts.conf</code>. <code>vhosts.conf</code> contains all HTTP sites and redirects HTTP -&gt; HTTPS for all secured sites. To add a new unsecured domain, follow the same format as the rest:
+  </p>
+
+  <div class="card card-block">
+    <pre>
+## [Name]
+&lt;VirtualHost *:80&gt;
+DocumentRoot [Directory]
+ServerAlias [example.com] [www.example.com] ...
+ServerAdmin [webmaster@example.com] (optional, but recommended)
+&lt;/VirtualHost&gt;
+    </pre>
+  </div>
+
+  <p>
+    For secure domains, the process is more complicated. In theory, two things need to be done to add a new secure domain: create a virtual host, and add it to the certificate. In practice, it's a solid 5 minutes work.
+  </p>
+</div>
+<div class="section">
+  <h2 class="section-header" id="https">HTTPS</h2>
+
+  <p>Welcome to the land of security (disclosure: this section is long, feel free to skip to the end). When a user connects to a webpage on HTTP (unsecured) all we do is send them the file they ask for. If they ask for <code>index.html</code>, we send <code>index.html</code>. If they ask for <code>style.css</code>, we send <code>style.css</code>. It's a pretty simple life. But what if the user want's privacy? What if they want security? Enter HTTPS. I'm not going to go into too much detail because that's not what this doc is for, but having a general idea is pretty useful. A certificate does two things: prove that we are who we say we are, and encrypt our website. If you find this interesting, or actually want to know how this stuff works, read <a href="https://letsencrypt.org/how-it-works/">this</a>.</p>
+
+  <p>
+    Our certificate provider is LetsEncrypt (<a href="https://letsencrypt.org/">https://letsencrypt.org/</a>) , a free and open certificate authority (CA). They provide certs for free, so we've taken advantage of that. To check if the cert is working, open a web-browser (I use chrome, that's what these screenshots are), click the little green lock &gt; Details &gt; View certificate. You should see something like this:
+  </p>
+  <img class="img-fluid" src="{{site.baseurl}}/img/cert_shot.png" alt="Certificate Example">
+  <p>
+    If the HTTPS page is loading without problem, odds are you're fine. You can see (at least on the screenshot) that the cert expires, and quite often. Each cert lasts a maximum of 30 days. There's also a ton of other restrictions, but I highly doubt you will ever encounter them (I mean seriously, we are NEVER going to register 10 new domains a day for a month). I've also setup a <code>cron</code> job to automagicially renew the cert on the 25th of every month (you'd know why if you read the cron section).
+  </p>
+
+  <p>
+    Onto the actual work! If you need to add a new HTTPS domain, add it safely. This means that at any point in time, a user visiting the domain should see something, NEVER the "Your connection is not private error".
+  </p>
+
+  <ol>
+    <li>
+      Add the SSL apache configuration.
+      <ul>
+        <li><code>cd</code> to <code>/etc/apache2/sites-available</code>. This is where all of our site configs live, but not where they get used.</li>
+        <li>Make a copy of <code>DOMAIN-le-ssl.conf</code>,  replace everything in caps with correct info, and drop the <code>.example</code> ending. Don't worry that the cert doesn't exist yet. Also don't bother adding comments. This file gets rewritten every time we renew the cert.</li>
+        <li>Symlink (<code>ln -s /path/to/file /path/to/new</code>)to the new config file in <code>/etc/apache2/sites-enabled</code>. A symlink (symbolic link) creates a reference to a file. That means the symlinked file in <code>sites-enabled</code> just points to the one in <code>sites-available</code>. If you edit one, both change. If you delete the symlink, the original stays.</li>
+      </ul>
+    </li>
+    <li>Add the domain to the certificate
+      <ul>
+        <li>In the home directory, run <code>./certbot-auto</code>. This will take you through an interactive process. Choose the <code>Easy</code> option for setup, because we manually set this up in a second.</li>
+      </ul>
+    </li>
+    <li>Add the redirect to apache
+      <ul>
+        <li>Back in <code>/etc/apache2/sites-available</code>, open up <code>vhosts.conf</code>. There is a section labeled "HTTP -&gt; HTTPS". In ServerAlias, add all the domains we want to redirect.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <p>
+    If this process goes wrong at any point, I highly suggest starting over, and reading the info/error messages more closely the next time around. All apache logs are stored in <code>/var/log/apache2/</code> with the most recent being stored in the one with the least endings (e.g. the most recent errors are in <code>/var/log/apache2/error.log</code> with the oldest being in <code>error.log.38.gz</code>). Certbot error logs are effectively too dense to be useful, as such I highly advice against reading them. The most relevant error messages are normally displayed.
+  </p>
+</div>
+<div class="section">
+  <h2 class="section-header" id="phpmyadmin">phpmyadmin</h2>
+  <p>
+    phpmyadmin is MySQL for people who need a mouse to get work done. Just kidding, it's an incredibly useful tool that allows you to organize and manage complex SQL database systems from an easy yet robust website. To visit the website, you'll need to find it. At the time of writing this, it was set up at <a href="https://world.ac/phpmyadmin">https://world.ac/phpmyadmin</a>. If you change it in the future <strong>make sure it falls under a secure domain</strong>.
+  </p>
+</div>
