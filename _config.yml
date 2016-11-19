@@ -8,6 +8,10 @@ repo: "https://github.com/studentserverspace/website/"
 
 # Build settings
 markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: true
+highlighter: rouge
 
 
 # Collections
