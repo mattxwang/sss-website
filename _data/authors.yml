@@ -12,3 +12,8 @@ john:
   name: John Mace
   site: http://jmace.me
   desc: A pretty awesome dude
+
+nick:
+  name: Nick O'Brien
+  site: http://obrien.tech
+  desc: A pretty fab fellow
