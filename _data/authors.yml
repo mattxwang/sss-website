@@ -1,7 +1,14 @@
-- name: Jack Sarick
+jack: 
+  name: Jack Sarick
   site: https://sarick.tech
   desc: An IB2 student who builds amazing things with code, english, metal, and more.
 
-- name: Matthew Wang
+matt:
+  name: Matthew Wang
   site: http://matthewwang.me
   desc: A pretty groovy kiddo
+
+john:
+  name: John Mace
+  site: http://jmace.me
+  desc: A pretty awesome dude
