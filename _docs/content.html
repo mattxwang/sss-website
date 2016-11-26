@@ -6,7 +6,211 @@ permalink: /docs/content/
 author: matt
 ---
 <div class="section">
-  <h2 class="section-header" id="overview">Overview</h2>
+  <h2 class="section-header" id="abstract">Abstract</h2>
   <p class="lead">
-    Love to play with owner's hair tie cat is love, cat is life. Sweet beast walk on car leaving trail of paw prints on hood and windshield the dog smells bad so inspect anything brought into the house, for purr while eating lick plastic bags so roll on the floor purring your whiskers off. Meow i like big cats and i can not lie hunt by meowing loudly at 5am next to human slave food dispenser or asdflkjaertvlkjasntvkjn (sits on keyboard). 
+    Want to submit an awesome project? Great! But, you need to make sure that your content adheres to our content policy. Let's learn about it in this article!
   </p>
+  <p class="lead">
+    Student Server Space, first and foremost, is a testing ground for students to get their projects up and running. It's designed for everybody to use it in good spirit, but we need a set of guidelines to clarify what is allowed and what's not. Generally, here's what we're looking for in our submissions:
+  </p>
+  <ul>
+    <li>
+      Open-sourced software
+    </li>
+    <li>
+      Non-commercial use
+    </li>
+    <li>
+      Well-designed, well-maintained, and secure code
+    </li>
+    <li>
+      Easily deployable
+    </li>
+    <li>
+      Content-Controlled
+    </li>
+    <li>
+      Equitable and Legal
+    </li>
+  </ul>
+  <p class="lead">
+    What do those mean exactly? We'll explain in these next few sections.
+  </p>
+</div>
+<div class="section">
+  <h2 class="section-header" id="requirements">Requirements</h2>
+  <p class="lead">
+    Very quickly, here's a table that outlines how our requirements for any submissions. You can find more information about each table category on the page categories, as well as examples and guides.
+  </p>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            Category
+          </th>
+          <th>
+            Category Requirement
+          </th>
+          <th>
+            Example(s)
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Source Code
+          </td>
+          <td>
+            Submitted code must be on a <a href="https://git-scm.com/">Git-based</a> Open-Source platform; we should be able to <code>git clone YOUR-REPOSITORY.git</code> to deploy your code.
+          </td>
+          <td>
+            <a href="https://github.com/">GitHub</a>
+        </tr>
+        <tr>
+          <td>
+            Licensing
+          </td>
+          <td>
+            Submitted Code must have an Open-Source License present in the source code, in a clearly-defined <code>LICENSE</code> file or similar.
+          </td>
+          <td>
+            <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License</a>, <a href="https://opensource.org/licenses/MIT">MIT License</a>, <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU GPL License</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Commerical Policy
+          </td>
+          <td>
+            Generally, submitted Code cannot contain monetary transactions, or sell a good or service. Exemptions can be made on a case-by-case model (e.g. charity websites).
+          </td>
+          <td>
+            <a href="https://github.com/malsf21/fair-chair">Fair Chair</a> provides a free service, which would be allowed.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Code Design and Practice
+          </td>
+          <td>
+            Code should be well-designed, and follow general coding practices. While we won't outright deny your code on this factor alone, it will play into whether or not it is accepted. There are resources in the "code design" section of this guide to help you out.
+          </td>
+          <td>
+            Properly named variables, <code>alt</code> attributes in <code>&lt;img&gt;</code> tags, commented code.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Code Maintenance
+          </td>
+          <td>
+            Code needs to be well-maintained; if there are large bugs in the software that are not fixed within a month, it will be taken down. In addition, if there is time-relevant information that is not updated, we will give you a warning, and possible probation.
+          </td>
+          <td>
+            Bug-fixing, complying to administration requests, updating time-relevant information.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Code Security
+          </td>
+          <td>
+            Code security is extremely important; we will vet your code for most common security holes, but any code that poses a security threat (or allows security threats through) jeopardizes the SSS system, and will be denied/removed.
+          </td>
+          <td>
+            We have our own page detailing security! <a href="{{site.baseurl}}/docs/security/">Check it out.</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Deployment
+          </td>
+          <td>
+            We require a bash, non-sudo build script for your code. An explanation can be found in the deployment section.
+          </td>
+          <td>
+            <a href="https://github.com/malsf21/world.ac/blob/master/setup.sh">WAC Setup Script</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Content Control
+          </td>
+          <td>
+            Users should not be able to edit or upload any front-facing content; we recommend static sites for SSS. Case-by-case exemptions may be made.
+          </td>
+          <td>
+            <a href="https://github.com/malsf21/paleta">Paleta</a> is a front-facing static site; <a href="https://world.ac/">WAC</a> has dynamic elements, but those elements are not front-facing.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Content Equity and Legality
+          </td>
+          <td>
+            Content should not discriminate against any group, incite violence, or encourage any hate speech. In addition, all content has to follow Canadian law, and cannot facilitate illegal activities.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="section">
+  <h2 class="section-header" id="source-code">Source Code</h2>
+  <p class="lead">
+    All of your project's code should be open-source. <a href="https://en.wikipedia.org/wiki/Open-source_software">According to Wikipedia</a>, open-source is defined as:
+  </p>
+  <blockquote class="blockquote">
+    ... computer software with its source code made available with a license in which the copyright holder provides the rights to study, change, and distribute the software to anyone and for any purpose.
+  </blockquote>
+  <div class="card card-block">
+    <span class="fa fa-star"></span> Reasoning
+    <p>
+      We require open-source software for two reasons. Firstly, we believe in principle that open-source software is beneficial: you're giving back to the community, allowing other people to learn from your work, and foster collaborative development. Open-source is becoming more and more popular in the workforce, and we want to make the transition easy for you. The second reason is that it makes integration very easy for us: we can view all of your source code easily, and deploy it even easier.
+    </p>
+  </div>
+  <p class="lead">
+    For simplicty, we also require your code to use a <a href="https://git-scm.com/">Git-based</a> implemenation of open-source. Git makes version control very easy, and also makes your own code cleaner and manageable.
+  </p>
+  <h3>Resources</h3>
+  <p class="lead">
+    Want some examples of ways to go open-source, with Git? Our main recommendation is <a href="https://github.com">GitHub</a>, which is a free, git-based, open-source website and program. We use GitHub for <a href="{{site.repo}}">this website</a>, as well as the majority of our projects. GitHub is very easy to use, has an amazing amount of resources, and a great community to help you get started. Here are some links to get you started:
+  </p>
+  <ul>
+    <li>
+      <a href="https://github.com">GitHub's Website</a>
+    </li>
+    <li>
+      <a href="https://education.github.com/">GitHub Education (you get free stuff!)</a>
+    </li>
+    <li>
+      <a href="https://help.github.com/categories/bootcamp/">GitHub Bootcamp</a>
+    </li>
+    <li>
+      <a href="https://services.github.com/training/">GitHub Training</a>
+    </li>
+    <li>
+      <a href="https://services.github.com/resources/">GitHub Cheatsheets</a>
+    </li>
+  </ul>
+  <h3>Examples</h3>
+  <ul>
+    <li>
+      <a href="{{site.repo}}">This Website</a>
+    </li>
+    <li>
+      <a href="https://github.com/malsf21/world.ac/">World Affairs Conference Website</a>
+    </li>
+    <li>
+      <a href="https://github.com/malsf21/paleta/">Paleta</a>
+    </li>
+    <li>
+      <a href="https://github.com/jacksarick/challenger">Challenger</a>
+    </li>
+    <li>
+      <a href="https://github.com/uccdmcs/dmcs.tech">DMCS Club Website</a>
+    </li>
+  </ul>
+</div>

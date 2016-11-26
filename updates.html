@@ -6,21 +6,22 @@ permalink: /updates/
 ---
 
 <div class="container">
-
-  <h1 class="page-heading">Posts</h1>
-
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
+  <h1>Updates <small>from your SSS team</small></h1>
+  {% for post in site.posts %}
+    <div class="card">
+      <div class="row">
+        <div class="col-md-6">
+          <img class="img-fluid" src="{% if post.img %}{{site.baseurl}}/img/{{post.img}}{% else %}{{site.baseurl}}/img/blog/default.png{% endif %}" alt="Blog Post Image" />
+        </div>
+        <div class="col-md-6">
+          <div class="card-block">
+            <h2 class="card-title">{{post.title}}</h2>
+            Written on {{ post.date | date: "%b %-d, %Y" }} by {% if post.author %}{{ post.author }}{% else %}an SSS Team Member{% endif %}
+            {{post.excerpt}}
+            <a class="btn btn-secondary" href="{{ post.url | prepend: site.baseurl }}"><span class="fa fa-bookmark-o"></span> Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
 </div>

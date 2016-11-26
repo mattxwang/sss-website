@@ -1,19 +1,19 @@
-jack: 
+jack:
   name: Jack Sarick
   site: https://sarick.tech
-  desc: An IB2 student who builds amazing things with code, english, metal, and more.
+  desc: Jack is an IB2 student who builds amazing things with code, english, metal, and more.
 
 matt:
   name: Matthew Wang
-  site: http://matthewwang.me
-  desc: A pretty groovy kiddo
+  site: https://matthewwang.me
+  desc: Matt is in love with coding, debate, GitHub, burritos, and mediocre music. 
 
 john:
   name: John Mace
-  site: http://jmace.me
+  site: https://jmace.me
   desc: A pretty awesome dude
 
 nick:
   name: Nick O'Brien
-  site: http://obrien.tech
+  site: https://obrien.tech
   desc: A pretty fab fellow

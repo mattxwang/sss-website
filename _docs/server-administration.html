@@ -88,31 +88,32 @@ author: jack
   <p>
     In practicality, it has more comments, and is probably slightly messier, but the general idea holds. I have added the last line as an example. Looking at it, you may see 7 columns. If you didn't see them, now you do. The table below shows a job split up into its constituent columns:
   </p>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Minute</th>
-        <th>Hour</th>
-        <th>Day of the month<br>(0-31)</th>
-        <th>Month<br>(1-12)</th>
-        <th>Day of the week<br>(0-7)</th>
-        <th>User</th>
-        <th>Command</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>21</td>
-        <td>4</td>
-        <td>*</td>
-        <td>*</td>
-        <td>2</td>
-        <td>neo</td>
-        <td><code>{cmd}</code></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Minute</th>
+          <th>Hour</th>
+          <th>Day of the month<br>(0-31)</th>
+          <th>Month<br>(1-12)</th>
+          <th>Day of the week<br>(0-7)</th>
+          <th>User</th>
+          <th>Command</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>21</td>
+          <td>4</td>
+          <td>*</td>
+          <td>*</td>
+          <td>2</td>
+          <td>neo</td>
+          <td><code>{cmd}</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <p>
     This job will be run run at 4:21 AM every Tuesday by the user neo. A <code>*</code> or wildcard indicates "every", so putting a wildcard in the month column means it will run during every month. This means that if you put a wildcard in the minutes column, that job will run every minute. You should almost never put a wild card in the first two columns, unless you actually want the job to run that frequently.

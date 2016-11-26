@@ -37,6 +37,8 @@
             <p class="lead">
               {% assign author = site.data.authors[page.author] %}
               This page was written by <a href="{{ author.site }}">{{ author.name }}</a>.
+              </br>
+              {{ author.desc }}
             </p>
             {% endif %}
             {{ content }}
