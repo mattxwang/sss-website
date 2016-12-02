@@ -4,7 +4,7 @@ description: > #
   Student Server Space
 baseurl: "/sss"
 url: "https://matthewwang.me"
-repo: "https://github.com/studentserverspace/website/"
+repo: "https://github.com/studentserverspace/website"
 
 # Build settings
 markdown: kramdown
@@ -19,3 +19,6 @@ collections:
   docs:
     output: true
     layout: docs
+  resources:
+    output: true
+    layout: resources

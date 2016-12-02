@@ -3,7 +3,7 @@ layout: default
 ---
 <div class="container">
   <img class="card-img img-fluid" src="{{site.baseurl}}/img/{{page.img}}" alt="Card image">
-  <h1 class="main-header text-xs-center spacing-top">{{page.title}}</h1>
+  <h1 class="main-header text-xs-center mt-1">{{page.title}}</h1>
   <h2 class="text-xs-center article-info">Written on {{ page.date | date: "%b %-d, %Y" }} by {% if page.author %}{{ page.author }}{% else %}an SSS Team Member{% endif %}</h2>
   {{content}}
 </div>

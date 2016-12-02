@@ -12,14 +12,14 @@
           <div class="card card-block" id="sidebar-menu">
             <ul class="list-unstyled main-menu nav nav-stacked">
               <li id="overview-menu">
-                <a href="{{site.baseurl}}/docs/overview/">
+                <a href="{{site.baseurl}}/resources/overview/">
                   Getting Started
                 </a>
               </li>
-              {% for docs in site.docs %}{% unless docs.short == "overview" %}
-                <li id="{{docs.short}}-menu">
-                  <a href="{{site.baseurl}}{{docs.url}}">
-                    {{docs.title}}
+              {% for resources in site.resources %}{% unless resources.short == "overview" %}
+                <li id="{{resources.short}}-menu">
+                  <a href="{{site.baseurl}}{{resources.url}}">
+                    {{resources.title}}
                   </a>
                 </li>
               {% endunless %}{% endfor %}
