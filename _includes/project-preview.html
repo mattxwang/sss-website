@@ -1,0 +1,49 @@
+<script>
+  var titletext = "Recent Project"
+  var projects = [
+  {% for project in site.projects %}
+  {
+    "name" : "{{project.title}}",
+    {% if project.github %}
+    "github" : "{{project.github}}",
+    {% endif %}
+    {% if project.website %}
+    "website" : "{{project.website}}",
+    {% endif %}
+    {% if project.creator %}
+    "creator" : "{{project.creator}}",
+    {% elsif project.creators %}
+    "creators" : "{{project.creators}}",
+    {% endif %}
+    "description" : "{{project.description}}",
+    "url" : "{{site.baseurl}}{{project.url}}"
+  },
+  {% endfor %}
+  ]
+  for (i = 0; i < 3; i++){
+    randint = Math.floor(Math.random() * projects.length);
+    html = '';
+    html += '<div class="card"><div class="card-header">' + titletext + '</div><div class="card-block"><h4 class="card-title"><a href="' + projects[randint]["url"] + '">' + projects[randint]["name"] + '</a></h4><p class="card-text">' + projects[randint]["description"] + '</p>';
+    if (projects[randint]["github"]){
+      html += '<a href="' + projects[randint]["github"] + '"><span class="fa fa-fw fa-2x fa-github black-icon"></span></a> '
+    }
+    if (projects[randint]["website"]){
+      html += '<a href="' + projects[randint]["website"] + '"><span class="fa fa-fw fa-2x fa-link black-icon"></span></a> '
+    }
+    html += '</div></div>'
+    $("#project-preview").append(html)
+    projects.splice(randint,1)
+  }
+  /*
+  <div class="card">
+    <div class="card-header">
+      ' + titletext + '
+    </div>
+    <div class="card-block">
+      <h4 class="card-title"><a href="' + projects[randint]["url"] + '">' + projects[randint]["name"] + '</a></h4>
+      <p class="card-text">' + projects[randint]["description"] + '</p>
+      <a href="' + projects[randint]["github"] + '"><span class="fa fa-fw fa-2x fa-github black-icon"></span></a> <a href="' + projects[randint]["website"] + '"><span class="fa fa-fw fa-2x fa-link black-icon"></span></a>
+    </div>
+  </div>
+  */
+</script>

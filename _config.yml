@@ -19,6 +19,9 @@ collections:
   docs:
     output: true
     layout: docs
+  projects:
+    output: true
+    layout: projects
   resources:
     output: true
     layout: resources

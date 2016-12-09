@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include head.html %}
+  </head>
+
+  <body>
+
+    {% include header.html %}
+
+    <div class="container">
+      <div class="card card-block">
+        <div class="row">
+          <div class="col-sm-4">
+            <img class="img-fluid" src="{{site.baseurl}}/img/projects/{{page.img}}" alt="Project Image" />
+          </div>
+          <div class="col-sm-8">
+            <h1>{{page.title}}</h1>
+            <p class="lead">
+              {{page.description}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="card card-block">
+            {{ content }}
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card card-block">
+            <h2>Links</h2>
+            <ul class="list-unstyled">
+              <li>
+                <a href="https://github.com/{{page.github}}"><span class="fa fa-github black-icon"></span> GitHub</a>
+              </li>
+              {% if page.website %}
+              <li>
+                <a href="{{page.website}}"><span class="fa fa-link black-icon"></span> Website</a>
+              </li>
+              {% endif %}
+            </ul>
+            {% if page.creator %}
+              {% assign creator = site.data.creators[page.creator] %}
+              <h2>Project Creator</h2>
+              <p class="lead">{{ creator.name}}</p>
+              {% if creator.img %}
+                <img class="d-block img-fluid rounded-circle half-image" src="{{site.baseurl}}/img/creators/{{creator.img}}" alt="Creator Image" />
+              {% endif %}
+              {% if creator.bio %}
+                <p>
+                  {{creator.bio}}
+                </p>
+              {% endif %}
+              {% if creator.github %}
+                <a href="https://github.com/{{creator.github}}"><span class="fa fa-github black-icon"></span> GitHub</a>
+              {% endif %}
+              {% if creator.github %}
+                <a href="{{creator.website}}"><span class="fa fa-link black-icon"></span> Website</a>
+              {% endif %}
+            {% elsif page.team %}
+              <h2>Project Team</h2>
+              <p class="lead">{{ page.creators}}</p>
+              {% if page.bioimg %}
+                <img class="img-fluid" src="{{site.baseurl}}/img/projects/creators/{{page.bioimg}}" alt="Creator Image" />
+              {% endif %}
+              {% if page.bio %}
+                {{page.bio}}
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% include footer.html %}
+
+  </body>
+
+</html>

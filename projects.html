@@ -1,76 +1,56 @@
 ---
-layout: default
 title: Student Server Space Projects
 special: projects
 permalink: /projects/
 ---
-<div class="container">
-  <div class="card card-block">
-    <div class="row">
-      <div class="col-sm-4">
-        <img class="img-fluid" src="{{site.baseurl}}/img/projects/paleta-1.png" />
-      </div>
-      <div class="col-sm-8">
-        <h1>Featured Project</h1>
-        <h2>Paleta</h2>
-        <a href="#"><span class="fa fa-fw fa-2x fa-link black-icon"></span></a> <a href="#"><span class="fa fa-fw fa-2x fa-github black-icon"></span></a>
-        <p>
-          Put toy mouse in food bowl run out of litter box at full speed meow, and cats making all the muffins and meow and behind the couch. Pee in the shoe lick the plastic bag paw at your fat belly meow meow, i tell my human or lick the plastic bag brown cats with pink ears.
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="card-deck-wrapper mt-2">
-    <div class="card-deck text-xs-center">
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include head.html %}
+  </head>
+
+  <body>
+
+    {% include header.html %}
+
+    <div class="container">
       <div class="card card-block">
-        <h3 class="card-title">Recent Projects</h3>
-        <p class="card-text">The latest student-made projects on SSS.</p>
-        <a href="#" class="btn btn-secondary"><span class="fa fa-wrench"></span> Browse Projects</a>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          Recent Project
-        </div>
-        <div class="card-block">
-          <h4 class="card-title">Challenger</h4>
-          <p class="card-text">Challenger provides students a quick and simple way to try and check computer science challenges.</p>
-          <a href="#"><span class="fa fa-fw fa-2x fa-link black-icon"></span></a> <a href="#"><span class="fa fa-fw fa-2x fa-github black-icon"></span></a>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          Recent Project
-        </div>
-        <div class="card-block">
-          <h4 class="card-title">Fair Chair</h4>
-          <p class="card-text">Fair Chair is a Desktop App that makes chairing Model UN conferences fair and easy.</p>
-          <a href="#"><span class="fa fa-fw fa-2x fa-link black-icon"></span></a> <a href="#"><span class="fa fa-fw fa-2x fa-github black-icon"></span></a>
+        <div class="row">
+          <div class="col-sm-4">
+            <img class="img-fluid" src="{{site.baseurl}}/img/projects/paleta-1.png" />
+          </div>
+          <div class="col-sm-8">
+            <h1>Featured Project</h1>
+            <h2><a href="{{site.baseurl}}/projects/paleta/">Paleta</a> by <a href="https://matthewwang.me">Matthew Wang</a></h2>
+            <a href="#"><span class="fa fa-fw fa-2x fa-link black-icon"></span></a> <a href="#"><span class="fa fa-fw fa-2x fa-github black-icon"></span></a>
+            <p>
+              Paleta is a set of style guides for UCC organisations and projects to make design easy.
+            </p>
+          </div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-header">
-          Recent Project
+      <div class="card-deck-wrapper mt-2">
+        <div class="card-deck text-xs-center" id="project-preview">
+          <div class="card card-block">
+            <h3 class="card-title">Recent Projects</h3>
+            <p class="card-text">The latest student-made projects on SSS.</p>
+          </div>
         </div>
-        <div class="card-block">
-          <h4 class="card-title">Paleta</h4>
-          <p class="card-text">Paleta is a set of style guides that explain the design and style behind many UCC-related organisations.</p>
-          <a href="#"><span class="fa fa-fw fa-2x fa-link black-icon"></span></a> <a href="#"><span class="fa fa-fw fa-2x fa-github black-icon"></span></a>
-        </div>
+      </div>
+      <div class="card card-block mt-2">
+        <h1>Project Directory</h1>
+        <ul class="list-unstyled list-items">
+          {% for project in site.projects %}
+            <li>
+              <a href="{{site.baseurl}}{{project.url}}">{{project.title}}</a> {% if project.github %}<a href="https://github.com/{{project.github}}"><span class="fa fa-fw fa-github black-icon"></span></a> {% endif %}{% if project.website %}<a href="{{project.website}}"><span class="fa fa-fw fa-link black-icon"></span></a> {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
       </div>
     </div>
-  </div>
-  <div class="card card-block mt-2">
-    <h1>Project Directory</h1>
-    <ul class="list-unstyled list-items">
-      <li>
-        <a href="#"><span class="fa fa-fw fa-link black-icon"></span></a> <a href="#"><span class="fa fa-fw fa-github black-icon"></span></a> <a href="#">Challenger</a>
-      </li>
-      <li>
-        <a href="#"><span class="fa fa-fw fa-link black-icon"></span></a> <a href="#"><span class="fa fa-fw fa-github black-icon"></span></a> <a href="#">Fair Chair</a>
-      </li>
-      <li>
-        <a href="#"><span class="fa fa-fw fa-link black-icon"></span></a> <a href="#"><span class="fa fa-fw fa-github black-icon"></span></a> <a href="#">Paleta</a>
-      </li>
-    </ul>
-  </div>
-</div>
+
+    {% include footer.html %}
+    {% include project-preview.html %}
+  </body>
+
+</html>

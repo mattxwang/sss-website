@@ -1,96 +1,81 @@
 ---
-layout: default
+
 ---
 
-<div class="container">
-  <div class="card">
-    <div class="row">
-      <div class="col-md-6">
-        <img class="img-fluid" src="img/jetpack-octocat.jpg" alt="Jetpack Octocat" />
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include head.html %}
+  </head>
+
+  <body>
+
+    {% include header.html %}
+
+    <div class="container">
+      <div class="card">
+        <div class="row">
+          <div class="col-md-6">
+            <img class="img-fluid" src="img/jetpack-octocat.jpg" alt="Jetpack Octocat" />
+          </div>
+          <div class="col-md-6">
+            <div class="card-block">
+              <h1 class="card-title">Student Server Space</h1>
+              <p>
+                Being a student developer is tough. There are thousands of Javascript frameworks, setting up a webserver is a mess, and credit cards are hard to come by for students. That's where Student Server Space comes in: we provide resources, space to host projects, and a developer community to support our student developers.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col-md-6">
-        <div class="card-block">
-          <h1 class="card-title">Student Server Space</h1>
-          <p>
-            Being a student developer is tough. There are thousands of Javascript frameworks, setting up a webserver is a mess, and credit cards are hard to come by for students. That's where Student Server Space comes in: we provide resources, space to host projects, and a developer community to support our student developers.
+      <div class="row text-xs-center mt-2">
+        <div class="col-sm-6">
+          <span class="fa fa-fw fa-5x fa-graduation-cap"></span>
+          <h2>For Students</h2>
+          <p class="lead">
+            Resources to help students learn programming.
+          </p>
+        </div>
+        <div class="col-sm-6">
+          <span class="fa fa-fw fa-5x fa-code"></span>
+          <h2>For Developers</h2>
+          <p class="lead">
+            A space to support student developers.
           </p>
         </div>
       </div>
+      <div class="card-deck-wrapper mt-2">
+        <div class="card-deck text-xs-center" id="project-preview">
+          <div class="card card-block">
+            <h3 class="card-title">Recent Projects</h3>
+            <p class="card-text">The latest student-made projects on SSS.</p>
+            <a href="{{site.baseurl}}/projects/" class="btn btn-secondary"><span class="fa fa-wrench"></span> Browse Projects</a>
+          </div>
+        </div>
+      </div>
+      <div class="card-deck-wrapper mt-2">
+        <div class="card-deck">
+          <div class="card card-block">
+            <h3 class="card-title">Documentation</h3>
+            <p class="card-text">Want to contribute to SSS? Learn about what you can submit, and how!</p>
+            <a href="{{site.baseurl}}/docs/overview/" class="btn btn-secondary"><span class="fa fa-book"></span> Read Docs</a>
+          </div>
+          <div class="card card-block">
+            <h3 class="card-title">Resources</h3>
+            <p class="card-text">Get resources to help you kickstart your development!</p>
+            <a href="{{site.baseurl}}/resources/overview/" class="btn btn-secondary"><span class="fa fa-wrench"></span> Browse Resources</a>
+          </div>
+          <div class="card card-block">
+            <h3 class="card-title">Updates</h3>
+            <p class="card-text">Get updates on SSS, projects, and developer news!</p>
+            <a href="{{site.baseurl}}/updates/" class="btn btn-secondary"><span class="fa fa-newspaper-o"></span> View Updates</a>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="row text-xs-center mt-2">
-    <div class="col-sm-6">
-      <span class="fa fa-fw fa-5x fa-graduation-cap"></span>
-      <h2>For Students</h2>
-      <p class="lead">
-        Resources to help students learn programming.
-      </p>
-    </div>
-    <div class="col-sm-6">
-      <span class="fa fa-fw fa-5x fa-code"></span>
-      <h2>For Developers</h2>
-      <p class="lead">
-        A space to support student developers.
-      </p>
-    </div>
-  </div>
 
-  <div class="card-deck-wrapper mt-2">
-    <div class="card-deck text-xs-center">
-      <div class="card card-block">
-        <h3 class="card-title">Projects</h3>
-        <p class="card-text">Browse awesome student-made projects on SSS.</p>
-        <a href="#" class="btn btn-secondary"><span class="fa fa-wrench"></span> Browse Projects</a>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          Recent Project
-        </div>
-        <div class="card-block">
-          <h4 class="card-title">Challenger</h4>
-          <p class="card-text">Challenger provides students a quick and simple way to try and check computer science challenges.</p>
-          <a href="#"><span class="fa fa-fw fa-2x fa-link black-icon"></span></a> <a href="#"><span class="fa fa-fw fa-2x fa-github black-icon"></span></a>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          Recent Project
-        </div>
-        <div class="card-block">
-          <h4 class="card-title">Fair Chair</h4>
-          <p class="card-text">Fair Chair is a Desktop App that makes chairing Model UN conferences fair and easy.</p>
-          <a href="#"><span class="fa fa-fw fa-2x fa-link black-icon"></span></a> <a href="#"><span class="fa fa-fw fa-2x fa-github black-icon"></span></a>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          Recent Project
-        </div>
-        <div class="card-block">
-          <h4 class="card-title">Paleta</h4>
-          <p class="card-text">Paleta is a set of style guides that explain the design and style behind many UCC-related organisations.</p>
-          <a href="#"><span class="fa fa-fw fa-2x fa-link black-icon"></span></a> <a href="#"><span class="fa fa-fw fa-2x fa-github black-icon"></span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="card-deck-wrapper mt-2">
-    <div class="card-deck">
-      <div class="card card-block">
-        <h3 class="card-title">Documentation</h3>
-        <p class="card-text">Want to contribute to SSS? Learn about what you can submit, and how!</p>
-        <a href="{{site.baseurl}}/docs/overview/" class="btn btn-secondary"><span class="fa fa-book"></span> Read Docs</a>
-      </div>
-      <div class="card card-block">
-        <h3 class="card-title">Resources</h3>
-        <p class="card-text">Get resources to help you kickstart your development!</p>
-        <a href="{{site.baseurl}}/resources/overview/" class="btn btn-secondary"><span class="fa fa-wrench"></span> Browse Resources</a>
-      </div>
-      <div class="card card-block">
-        <h3 class="card-title">Updates</h3>
-        <p class="card-text">Get updates on SSS, projects, and developer news!</p>
-        <a href="{{site.baseurl}}/updates/" class="btn btn-secondary"><span class="fa fa-newspaper-o"></span> View Updates</a>
-      </div>
-    </div>
-  </div>
-</div>
+    {% include footer.html %}
+    {% include project-preview.html %}
+  </body>
+
+</html>
