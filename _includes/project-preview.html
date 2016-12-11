@@ -25,7 +25,7 @@
     html = '';
     html += '<div class="card"><div class="card-header">' + titletext + '</div><div class="card-block"><h4 class="card-title"><a href="' + projects[randint]["url"] + '">' + projects[randint]["name"] + '</a></h4><p class="card-text">' + projects[randint]["description"] + '</p>';
     if (projects[randint]["github"]){
-      html += '<a href="' + projects[randint]["github"] + '"><span class="fa fa-fw fa-2x fa-github black-icon"></span></a> '
+      html += '<a href="https://github.com/' + projects[randint]["github"] + '"><span class="fa fa-fw fa-2x fa-github black-icon"></span></a> '
     }
     if (projects[randint]["website"]){
       html += '<a href="' + projects[randint]["website"] + '"><span class="fa fa-fw fa-2x fa-link black-icon"></span></a> '
