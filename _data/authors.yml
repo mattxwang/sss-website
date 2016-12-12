@@ -1,19 +1,17 @@
-jack:
-  name: Jack Sarick
-  site: https://sarick.tech
-  desc: Jack is an IB2 student who builds amazing things with code, english, metal, and more.
-
-matt:
+matthewwang:
   name: Matthew Wang
   site: https://matthewwang.me
-  desc: Matt is in love with coding, debate, GitHub, burritos, and mediocre music. 
+  bio: Matt is in love with coding, debate, GitHub, burritos, and mediocre music. Matt spearheaded this project, and handles content, front-end design, and documentation.
+  github: malsf21
 
-john:
+jacksarick:
+  name: Jack Sarick
+  site: https://sarick.tech
+  bio: Jack is an IB2 student who builds amazing things with code, english, metal, and more. Jack handles back-end design and server administration.
+  github: jacksarick
+
+johnmace:
   name: John Mace
   site: https://jmace.me
-  desc: A pretty awesome dude
-
-nick:
-  name: Nick O'Brien
-  site: https://obrien.tech
-  desc: A pretty fab fellow
+  bio: John is an IB1 student who builds mediocre things with code, english, and metal. John helps handle content and documentation.
+  github: j0hnmace

@@ -1,0 +1,20 @@
+---
+title: Student Server Space Team
+special: team
+layout: default
+permalink: /team/
+---
+<div class="container">
+  <h1>The Team</h1>
+  <p class="lead">
+    Student Server Space takes a lot of work, and it wouldn't be possible without the awesome team behind it. Here's a quick look at who's helped made SSS awesome!
+  </p>
+  {% for author in site.data.authors %}
+    <div class="card card-block">
+      <h2>{{author[1].name}} {% if author[1].github %}<a href="https://github.com/{{author[1].github}}"><span class="fa fa-github black-icon"></span></a>{% endif %} {% if author[1].site %}<a href="{{author[1].site}}"><span class="fa fa-link black-icon"></span></a>{% endif %}</h2>
+      <p>
+        {{author[1].bio}}
+      </p>
+    </div>
+  {% endfor %}
+</div>

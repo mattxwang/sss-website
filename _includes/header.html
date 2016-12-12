@@ -12,6 +12,9 @@
         <a class="nav-link{% if page.layout == "resources"%} active{% endif %}" href="{{site.baseurl}}/resources/overview/">Resources</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link{% if page.layout == "team"%} active{% elsif page.special == "team" %} active{% endif %}" href="{{site.baseurl}}/team/">Team</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link{% if page.layout == "post"%} active{% elsif page.special == "updates" %} active{% endif %}" href="{{site.baseurl}}/updates/">Updates</a>
       </li>
     </ul>
