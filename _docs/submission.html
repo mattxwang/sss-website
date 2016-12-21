@@ -8,7 +8,7 @@ author: matthewwang
 <div class="section">
   <h2 class="section-header" id="overview">Overview</h2>
   <div class="card card-block card-outline-warning">
-    <span class="text-warning"><span class="fa fa-exclamation"></span> Warning</span>
+    <span class="text-warning"><span class="fa fa-exclamation"></span> Notice</span>
     <p>
       This article tells you how to submit your project to the Student Server Space, not how to deploy it. To deploy your code, read our <a href="{{site.baseurl}}/docs/deploy/">Deployment Guide</a>, after submitting your project.
     </p>
@@ -41,7 +41,7 @@ author: matthewwang
   </p>
 </div>
 <div class="section">
-  <h2 class="section-header" id="setup">1. Setup</h2>
+  <h2 class="section-header" id="setup">Setup</h2>
   <p class="lead">
     Let's setup your local development machine so you can make some changes! The first thing you're going to do is fork and clone the <a href="{{site.repo}}">Student Server Space Website repository</a> on GitHub, so you can work on it. Here's a photo that shows you what button to press:
   </p>
@@ -64,7 +64,7 @@ author: matthewwang
   </p>
 </div>
 <div class="section">
-  <h2 class="section-header" id="add-project">2. Adding Your Project</h2>
+  <h2 class="section-header" id="add-project">Adding Projects</h2>
   <p class="lead">
     Adding your project to the Student Server Space directory requires you to make one (or two) files. First, we're going to make a new `YOUR-PROJECT-NAME.md` (markdown) file in the `_projects` directory. Then, we're going to add our YAML header: this is something specific to <a href="https://jekyllrb.com">Jekyll</a>, if you're interested. Here's an example template, for <a href="{{site.baseurl}}/projects/paleta/">Paleta.</a>
   </p>
@@ -181,10 +181,10 @@ author: matthewwang
         </tr>
         <tr>
           <td>
-            <code>creator</code> or <code>creators</code>
+            <code>creator</code>
           </td>
           <td>
-            The creator key for your project. More on this below. Use <code>creators</code> if it's made by an organisation.
+            The creator key for your project. More on this below.
           </td>
           <td>
             <span class="fa fa-check text-success"></span>
@@ -219,4 +219,174 @@ author: matthewwang
       </p>
     </div>
   </div>
+</div>
+<div class="section">
+  <h2 class="section-header" id="adding-creator">Adding Creators</h2>
+  <div class="card card-block card-outline-primary">
+    <span class="text-primary"><span class="fa fa-info"></span> Tip</span>
+    <p>
+      If you've already added yourself as a creator before, you don't need to repeat this step.
+    </p>
+  </div>
+  <p class="lead">
+    At Student Server Space, we care a lot about attributing creators! When you submit your project, you have the ability to add your creator information.
+  </p>
+  <p class="lead">
+    To add a new author, navigate to <code>/_data/creators.yml</code>. You'll have something that looks like this:
+  </p>
+  <pre>
+    <code>
+      matthewwang:
+        name: Matthew Wang
+        site: https://matthewwang.me
+        bio: Matt is in love with coding, debate, GitHub, burritos, and mediocre music. Matt spearheaded this project, and handles content, front-end design, and documentation.
+        github: malsf21
+
+      jacksarick:
+        name: Jack Sarick
+        site: https://sarick.tech
+        bio: Jack is an IB2 student who builds amazing things with code, english, metal, and more. Jack handles back-end design and server administration.
+        github: jacksarick
+    </code>
+  </pre>
+  <p class="lead">
+    To add a new entry (you!), all you have to add is a slug key, <code>yourname:</code>, and nest your full name as a string, <code>name: Your Name</code>. Here's a description of all the possible options you can have:
+  </p>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            Element Name
+          </th>
+          <th>
+            Element Description
+          </th>
+          <th>
+            Required
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>name</code>
+          </td>
+          <td>
+            Your full name! If you have a name that includes chars that trip up YAML or Ruby, try encasing it in <code>""</code>, or HTML escape it.
+          </td>
+          <td>
+            <span class="fa fa-check text-success"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <code>site</code>
+          </td>
+          <td>
+            If you have a website, you can add a link here! Make sure it's a full link, and make sure it's appropriate.
+          </td>
+          <td>
+
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <code>bio</code>
+          </td>
+          <td>
+            A short, one or two line bio. Keep it short and sweet for best effects!
+          </td>
+          <td>
+
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <code>github</code>
+          </td>
+          <td>
+            Your GitHub username, if you have one. Just include the username, no link required.
+          </td>
+          <td>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="lead">
+    Once you add your own key to the <code>creators.yml</code>, you're ready to submit your pull request.
+  </p>
+</div>
+<div class="section">
+  <h2 class="section-header" id="project-testing">Project Testing</h2>
+  <p class="lead">
+    Now that you've added your project (and your creator file) to your repository, we're going to test them to see if they work, using <a href="https://jekyllrb.com">Jekyll</a>. You'll need Ruby to use Jekyll, but that comes pre-installed on most unix systems.
+  </p>
+  <div class="card card-block card-outline-primary">
+    <span class="text-primary"><span class="fa fa-info"></span> Tip</span>
+    <p>
+      Installing Jekyll is super easy! Just type in <code>gem install jekyll</code> into your command line/terminal.
+    </p>
+  </div>
+  <p class="lead">
+    We're now going to test your new code to see if it works! In the root directory of your project, or <code>/</code>, type in your command line <code>jekyll serve</code>. If your output looks something like this:
+  </p>
+  <pre>
+    <code>
+      Configuration file: /Users/matthew.wang/github/website/_config.yml
+      Configuration file: /Users/matthew.wang/github/website/_config.yml
+                  Source: /Users/matthew.wang/github/website
+             Destination: /Users/matthew.wang/github/website/_site
+       Incremental build: disabled. Enable with --incremental
+            Generating...
+                          done in 1.585 seconds.
+       Auto-regeneration: enabled for '/Users/matthew.wang/github/website'
+      Configuration file: /Users/matthew.wang/github/website/_config.yml
+          Server address: http://127.0.0.1:4000/sss/
+        Server running... press ctrl-c to stop.
+    </code>
+  </pre>
+  <p class="lead">
+    Then it's working! If some error messages pop up, see if you can fix them yourself (google is a great resource). After having no compile errors, you can check out the website yourself. Visit the address that comes after <code>Server addrress</code> in your browser, and try checking the Projects Directory to see if your set up works as intended.
+  </p>
+</div>
+<div class="section">
+  <h2 class="section-header" id="submit-projects">Submitting Projects</h2>
+  <p class="lead">
+    Now that your project is submitted in your local repository, and tested, we're going to bring it up to speed with our main branch! Here's a graphical explanation of what we're doing in principle; after, we'll walk you through how to do it with Student Server Space.
+  </p>
+  <img class="img-fluid" src="{{site.baseurl}}/img/submission/github-flow-cheatsheet.png" alt="A visual example of how GitHub, and Git, flows." />
+  <p class="lead">
+    The first thing we want to do is commit our changes to our remote branch on our fork. In other words, that means pressing that commit + sync button on GitHub Desktop, or doing <code>git commit</code> and <code>git push origin master</code> on your command line. After your fork repository is up to speed with your local development file system (you can double check this by visiting <code>YOUR-USERNAME/website</code> on GitHub), we're going to submit a Pull Request.
+  </p>
+  <p class="lead">
+    A Pull Request sends your new changes, in your forked repository, and asks the main SSS website's repository to merge these changes. In this case, you'll do this through GitHub. Head to the "Pull Requests" section of your fork, and press "New Pull Request" button.
+  </p>
+  <img class="img-fluid" src="{{site.baseurl}}/img/submission/fork-pr.png" alt="What the Pull Request tab looks like on the GitHub website." />
+  <p class="lead">
+    You should get a screen that looks like this:
+  </p>
+  <img class="img-fluid" src="{{site.baseurl}}/img/submission/compare-pr.png" alt="What the Compare Pull Request screen looks like on the GitHub website." />
+  <p class="lead">
+    Press that "Create pull request" button. Now, you should be a screen like this:
+  </p>
+  <img class="img-fluid" src="{{site.baseurl}}/img/submission/create-pr.png" alt="What the Create Pull Request screen looks like on the GitHub website." />
+  <p class="lead">
+    Fill out the paragraph description (it'll make things easier on us), and click "Create pull request"! And you're done! Wait until your pull request gets responded to: we'll either merge it, and put it on the website, or deny it, and let you know what you need to fix so it becomes mergeable.
+  </p>
+  <img class="img-fluid" src="{{site.baseurl}}/img/submission/create-pr.png" alt="A merged pull request on the GitHub website." />
+  <p class="lead">
+    Ta-da! We're done!
+  </p>
+</div>
+<div class="section">
+  <h2 class="section-header" id="conclusion">Conclusion</h2>
+  <p class="lead">
+    If you have a project that you want to deploy, now's the time you want to deploy it. Check out our <a href="{{site.baseurl}}/docs/deploy/">Deployment Guide</a> on how to do that!
+  </p>
+  <p class="lead">
+    As always, if you need any help, ask your faculty or student Student Server Space members: we're alwys willing to help you become an awesome student developer!
+  </p>
 </div>
