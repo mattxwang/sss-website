@@ -9,30 +9,39 @@ $background-light: #f5f7f9;
 
 // fonts
 
-@font-face{
-	font-family: 'Muli';
-	src:url({{site.baseurl}}/fonts/muli/Muli-Regular.ttf);
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+	font-weight: 400;
+  src: local('Muli Regular'), local('Muli-Regular'), url({{site.baseurl}}/fonts/muli/Muli-Regular.ttf) format('ttf');
 }
 
-@font-face{
-	font-family: 'Nexa Slab';
-	src:url({{site.baseurl}}/fonts/nexaslab/nexa_slab_regular.otf);
+@font-face {
+  font-family: 'Muli';
+  font-style: italic;
+	font-weight: 400;
+  src: local('Muli Italic'), local('Muli-Italic'),  url({{site.baseurl}}/fonts/muli/Muli-Italic.ttf) format('ttf');
+}
+
+@font-face {
+  font-family: 'Muli';
+  font-weight: 700;
+  src: local('Muli Bold'), local('Muli-Bold'), url({{site.baseurl}}/fonts/muli/Muli-Bold.ttf) format('ttf');
+}
+
+@font-face {
+  font-family: 'Muli';
+	font-style: italic;
+  font-weight: 700;
+  src: local('Muli Bold'), local('Muli-BoldItalic'), url({{site.baseurl}}/fonts/muli/Muli-Bold.ttf) format('ttf');
 }
 
 .muli{
 	font-family: 'Muli', sans-serif;
 }
 
-.nexa-slab{
-	font-family: 'Nexa Slab', serif;
-}
-
 body{
 	font-family: 'Muli', sans-serif;
-}
-
-h1,h2,h3,h4,h5,h6{
-	font-family: 'Nexa Slab', serif;
 }
 
 // Utility
@@ -48,17 +57,12 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .navbar-brand{
-  font-family: 'Nexa Slab', serif;
   font-size: 2em;
   padding-right: 1em;
 }
 
 .nav-item{
   padding-top: 0.5em;
-}
-
-.footer-title{
-  font-family: 'Nexa Slab', serif;
 }
 
 .main-header{

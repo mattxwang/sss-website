@@ -68,21 +68,23 @@ author: matthewwang
   <p class="lead">
     Adding your project to the Student Server Space directory requires you to make one (or two) files. First, we're going to make a new <code>YOUR-PROJECT-NAME.md</code> (markdown) file in the <code>_projects</code> directory. Then, we're going to add our YAML header: this is something specific to <a href="https://jekyllrb.com">Jekyll</a>, if you're interested. Here's an example template, for <a href="{{site.baseurl}}/projects/paleta/">Paleta.</a>
   </p>
-  <pre>
-    <code>
-      ---
-      layout: projects
-      title: Paleta
-      short: paleta
-      permalink: /projects/paleta/
-      github: "malsf21/paleta"
-      website: "https://malsf21.github.io/paleta/"
-      img: "paleta-1.png"
-      creator: matthewwang
-      description: "Paleta is a set of style guides for UCC organisations and projects to make design easy."
-      ---
-    </code>
-  </pre>
+  <div class="card card-block">
+    <pre>
+      <code>
+        ---
+        layout: projects
+        title: Paleta
+        short: paleta
+        permalink: /projects/paleta/
+        github: "malsf21/paleta"
+        website: "https://malsf21.github.io/paleta/"
+        img: "paleta-1.png"
+        creator: matthewwang
+        description: "Paleta is a set of style guides for UCC organisations and projects to make design easy."
+        ---
+      </code>
+    </pre>
+  </div>
   <p class="lead">
     Confused by what those categories mean? No problem! Here's a nifty table explaining each element:
   </p>
@@ -234,21 +236,23 @@ author: matthewwang
   <p class="lead">
     To add a new author, navigate to <code>/_data/creators.yml</code>. You'll have something that looks like this:
   </p>
-  <pre>
-    <code>
-      matthewwang:
-        name: Matthew Wang
-        site: https://matthewwang.me
-        bio: Matt is in love with coding, debate, GitHub, burritos, and mediocre music. Matt spearheaded this project, and handles content, front-end design, and documentation.
-        github: malsf21
+  <div class="card card-block">
+    <pre>
+      <code>
+        matthewwang:
+          name: Matthew Wang
+          site: https://matthewwang.me
+          bio: Matt is in love with coding, debate, GitHub, burritos, and mediocre music. Matt spearheaded this project, and handles content, front-end design, and documentation.
+          github: malsf21
 
-      jacksarick:
-        name: Jack Sarick
-        site: https://sarick.tech
-        bio: Jack is an IB2 student who builds amazing things with code, english, metal, and more. Jack handles back-end design and server administration.
-        github: jacksarick
-    </code>
-  </pre>
+        jacksarick:
+          name: Jack Sarick
+          site: https://sarick.tech
+          bio: Jack is an IB2 student who builds amazing things with code, english, metal, and more. Jack handles back-end design and server administration.
+          github: jacksarick
+      </code>
+    </pre>
+  </div>
   <p class="lead">
     To add a new entry (you!), all you have to add is a slug key, <code>yourname:</code>, and nest your full name as a string, <code>name: Your Name</code>. Here's a description of all the possible options you can have:
   </p>
@@ -333,21 +337,23 @@ author: matthewwang
   <p class="lead">
     We're now going to test your new code to see if it works! In the root directory of your project, or <code>/</code>, type in your command line <code>jekyll serve</code>. If your output looks something like this:
   </p>
-  <pre>
-    <code>
-      Configuration file: /Users/matthew.wang/github/website/_config.yml
-      Configuration file: /Users/matthew.wang/github/website/_config.yml
-                  Source: /Users/matthew.wang/github/website
-             Destination: /Users/matthew.wang/github/website/_site
-       Incremental build: disabled. Enable with --incremental
-            Generating...
-                          done in 1.585 seconds.
-       Auto-regeneration: enabled for '/Users/matthew.wang/github/website'
-      Configuration file: /Users/matthew.wang/github/website/_config.yml
-          Server address: http://127.0.0.1:4000/sss/
-        Server running... press ctrl-c to stop.
-    </code>
-  </pre>
+  <div class="card card-block">
+    <pre>
+      <code>
+        Configuration file: /Users/matthew.wang/github/website/_config.yml
+        Configuration file: /Users/matthew.wang/github/website/_config.yml
+                    Source: /Users/matthew.wang/github/website
+               Destination: /Users/matthew.wang/github/website/_site
+         Incremental build: disabled. Enable with --incremental
+              Generating...
+                            done in 1.585 seconds.
+         Auto-regeneration: enabled for '/Users/matthew.wang/github/website'
+        Configuration file: /Users/matthew.wang/github/website/_config.yml
+            Server address: http://127.0.0.1:4000/sss/
+          Server running... press ctrl-c to stop.
+      </code>
+    </pre>
+  </div>
   <p class="lead">
     Then it's working! If some error messages pop up, see if you can fix them yourself (google is a great resource). After having no compile errors, you can check out the website yourself. Visit the address that comes after <code>Server addrress</code> in your browser, and try checking the Projects Directory to see if your set up works as intended.
   </p>
@@ -376,7 +382,7 @@ author: matthewwang
   <p class="lead">
     Fill out the paragraph description (it'll make things easier on us), and click "Create pull request"! And you're done! Wait until your pull request gets responded to: we'll either merge it, and put it on the website, or deny it, and let you know what you need to fix so it becomes mergeable.
   </p>
-  <img class="img-fluid" src="{{site.baseurl}}/img/submission/create-pr.png" alt="A merged pull request on the GitHub website." />
+  <img class="img-fluid" src="{{site.baseurl}}/img/submission/success-pr.png" alt="A merged pull request on the GitHub website." />
   <p class="lead">
     Ta-da! We're done!
   </p>
