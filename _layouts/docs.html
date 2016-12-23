@@ -35,7 +35,7 @@
           {% if page.author %}
           <p class="lead">
             {% assign author = site.data.authors[page.author] %}
-            This page was written by <a href="{{ author.site }}">{{ author.name }}</a>.
+            This page was written by <a href="{{ site.baseurl }}/team/">{{ author.name }}</a>.
             </br>
             {{ author.desc }}
           </p>
