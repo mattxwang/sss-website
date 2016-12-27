@@ -11,26 +11,29 @@ $background-light: #f5f7f9;
 
 @font-face {
   font-family: 'Muli';
-  src: local('Muli Regular'), local('Muli-Regular'), url({{site.baseurl}}/fonts/muli/Muli-Regular.ttf) format('ttf');
+  font-style: normal;
+	font-weight: 400;
+  src: local('Muli Regular'), local('Muli-Regular'), url('{{site.baseurl}}/fonts/muli/Muli-Regular.ttf') format('ttf');
 }
 
 @font-face {
   font-family: 'Muli';
   font-style: italic;
-  src: local('Muli Italic'), local('Muli-Italic'),  url({{site.baseurl}}/fonts/muli/Muli-Italic.ttf) format('ttf');
+	font-weight: 400;
+  src: local('Muli Italic'), local('Muli-Italic'),  url('{{site.baseurl}}/fonts/muli/Muli-Italic.ttf') format('ttf');
 }
 
 @font-face {
   font-family: 'Muli';
-  font-weight: bold;
-  src: local('Muli Bold'), local('Muli-Bold'), url({{site.baseurl}}/fonts/muli/Muli-Bold.ttf) format('ttf');
+  font-weight: 700;
+  src: local('Muli Bold'), local('Muli-Bold'), url('{{site.baseurl}}/fonts/muli/Muli-Bold.ttf') format('ttf');
 }
 
 @font-face {
   font-family: 'Muli';
 	font-style: italic;
-  font-weight: bold;
-  src: local('Muli Bold'), local('Muli-BoldItalic'), url({{site.baseurl}}/fonts/muli/Muli-Bold.ttf) format('ttf');
+  font-weight: 700;
+  src: local('Muli Bold'), local('Muli-BoldItalic'), url('{{site.baseurl}}/fonts/muli/Muli-Bold.ttf') format('ttf');
 }
 
 .muli{
