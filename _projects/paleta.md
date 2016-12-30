@@ -4,12 +4,58 @@ title: Paleta
 short: paleta
 permalink: /projects/paleta/
 github: "malsf21/paleta"
-website: "https://malsf21.github.io/paleta/"
+website: "https://matthewwang.me/paleta/"
 img: "paleta-1.png"
 creator: matthewwang
 description: "Paleta is a set of style guides for UCC organisations and projects to make design easy."
 ---
 
-Lorem Khaled Ipsum is a major key to success. Major key, don’t fall for the trap, stay focused. It’s the ones closest to you that want to see you fail. It’s important to use cocoa butter. It’s the key to more success, why not live smooth? Why live rough? Let’s see what Chef Dee got that they don’t want us to eat. They don’t want us to eat. We the best. The key to success is to keep your head above the water, never give up.
+![Paleta Full Logo](https://matthewwang.me/paleta/img/signature.png)
 
-Always remember in the jungle there’s a lot of they in there, after you overcome they, you will make it to paradise. Egg whites, turkey sausage, wheat toast, water. Of course they don’t want us to eat our breakfast, so we are going to enjoy our breakfast. Congratulations, you played yourself. The key is to enjoy life, because they don’t want you to enjoy life. I promise you, they don’t want you to jetski, they don’t want you to smile. Lion! Put it this way, it took me twenty five years to get these plants, twenty five years of blood sweat and tears, and I’m never giving up, I’m just getting started.
+# [paleta](https://matthewwang.me/paleta/)
+
+[![Build Status](https://travis-ci.org/malsf21/paleta.svg?branch=master)](https://travis-ci.org/malsf21/paleta)
+
+Paleta is an online style guide for a few organisations that I have some sort of design role in. It provides information such as colour palettes, typography, or branding. Plus, it's modular, which means that you can use Paleta to make your own style guides. Awesome!
+
+## Organizations
+
+Currently, Paleta supports:
+* [The World Affairs Conference](https://world.ac)
+* [9651 Robotics](https://robotics.ucc.on.ca)
+
+Paleta plans to support:
+* [Convergence](https://convergence.today)
+* [UCC Digital Media and Computer Science Club](https://dmcs.tech)
+* [Ontario Model United Nations](https://omun.ca)
+* [Student Server Space](https://github.com/studentserverspace/website)
+
+## Setup
+
+Paleta uses a script to perform setup (installing dependencies, moving a few files around, etc). In order to run the setup script, just run:
+
+```
+./setup.sh
+```
+
+After, you just need to serve the site. You should use:
+
+```
+./start.sh
+```
+
+On the contrary, if you want to build the site into the `_site` directory, run:
+
+```
+./build.sh
+```
+
+If you're having issues with running any `.sh` files, enter this in your terminal to make it executable:
+
+```
+chmod +x YOUR-FILE.sh
+```
+
+## Making a Style Guide
+
+Coming soon!
