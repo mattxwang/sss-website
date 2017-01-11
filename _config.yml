@@ -2,7 +2,7 @@
 title: Student Server Space
 description: > #
   Student Server Space
-baseurl: "/sss"
+baseurl: ""
 url: "https://matthewwang.me"
 repo: "https://github.com/studentserverspace/website"
 
